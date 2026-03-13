@@ -1,0 +1,47 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Admin Force Exit</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div id="loader" class="loader-overlay">
+        <div class="spinner"></div>
+    </div>
+<div class="container">
+    <h2>🔐 Admin Force Exit</h2>
+
+    <form id="forceForm" class="form-box">
+        <input type="password" id="password" placeholder="Admin Password" required>
+        <input type="text" id="vehicle" placeholder="Vehicle Number" required>
+        <button type="submit" class="btn">Force Exit</button>
+    </form>
+
+    <pre id="output" class="output-box"></pre>
+
+    <a href="menu.html" class="back-btn">⬅ Back to Menu</a>
+</div>
+
+<script>
+document.getElementById("forceForm").addEventListener("submit", async function(e) {
+    e.preventDefault();
+
+    const password = document.getElementById("password").value;
+    const vehicle = document.getElementById("vehicle").value;
+
+    const response = await fetch("/run", {
+        method: "POST",
+        headers: {"Content-Type":"application/json"},
+        body: JSON.stringify({
+            input: `7\n${password}\n${vehicle}\n`
+        })
+    });
+
+    const data = await response.text();
+    document.getElementById("output").innerText = data;
+});
+</script>
+<script src="js/app.js"></script>
+</body>
+</html>

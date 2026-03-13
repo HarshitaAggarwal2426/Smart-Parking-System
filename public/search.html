@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Search Vehicle</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div id="loader" class="loader-overlay">
+        <div class="spinner"></div>
+    </div>
+<div class="container">
+    <h2>🔍 Search Vehicle</h2>
+
+    <form id="searchForm">
+        <input type="text" id="searchVehicle" placeholder="Enter Vehicle Number" required>
+        <button type="submit">Search</button>
+    </form>
+
+    <div class="terminal-output" id="output"></div>
+
+    <a href="menu.html" class="back">⬅ Back to Menu</a>
+</div>
+
+<script>
+document.getElementById("searchForm").addEventListener("submit", async function(e) {
+    e.preventDefault();
+
+    const vehicle = document.getElementById("searchVehicle").value;
+
+    const response = await fetch("/run", {
+        method: "POST",
+        headers: {"Content-Type":"application/json"},
+        body: JSON.stringify({
+            input: `4\n${vehicle}\n`
+        })
+    });
+
+    const data = await response.text();
+    document.getElementById("output").innerText = data;
+});
+</script>
+<script src="js/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Park Vehicle</title>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div id="loader" class="loader-overlay">
+        <div class="spinner"></div>
+    </div>
+<div class="container">
+    <h2><i class="fas fa-car-side"></i> Park Vehicle</h2>
+
+    <form id="parkForm">
+    <input type="text" id="vehicle" name="vehicle"
+        placeholder="Vehicle Number (DL01AB1234)" required>
+
+    <div class="vehicle-type">
+        <label class="type-option">
+            <input type="radio" name="type" value="1" checked>
+            <span>🚙 Car</span>
+        </label>
+
+        <label class="type-option">
+            <input type="radio" name="type" value="2">
+            <span>🏍 Bike</span>
+        </label>
+    </div>
+
+    <input type="text" id="phone" name="phone"
+        placeholder="Phone Number" required>
+
+    <button type="submit">Park</button>
+</form>
+
+
+    <div class="terminal-output" id="output"></div>
+
+    <a href="menu.html" class="back">⬅ Back to Menu</a>
+</div>
+
+<script src="js/app.js"></script>
+</body>
+</html>

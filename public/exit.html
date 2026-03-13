@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Exit Vehicle</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div id="loader" class="loader-overlay">
+        <div class="spinner"></div>
+    </div>
+<div class="container">
+    <h2>🚨 Exit Vehicle (OTP Required)</h2>
+
+    <form id="exitForm">
+        <label>Vehicle Number:</label><br>
+    <input type="text" id="vehicle" required><br><br>
+
+    <label>Enter OTP:</label><br>
+    <input type="text" id="otp" required><br><br>
+
+    <label>Select Payment Method:</label><br>
+    <select id="payment" class="payment-select">
+        <option value="1">UPI</option>
+        <option value="2">Card</option>
+        <option value="3">Cash</option>
+    </select><br><br>
+
+    <button type="submit">Exit Vehicle</button>
+
+    </form>
+
+    <div class="terminal-output" id="output"></div>
+
+    <a href="menu.html" class="back">⬅ Back to Menu</a>
+</div>
+
+<script src="js/app.js"></script>
+<script>
+document.getElementById("exitForm").addEventListener("submit", async function(e) {
+    e.preventDefault();
+
+    const vehicle = document.getElementById("vehicle").value;
+    const otp = document.getElementById("otp").value;
+    const payment = document.getElementById("payment").value;
+    const loader = document.getElementById("loader");
+
+    try {
+        loader.style.display = "flex";
+
+        const response = await fetch("/run", {
+            method: "POST",
+            headers: {"Content-Type":"application/json"},
+            body: JSON.stringify({
+                input: `2\n${vehicle}\n${otp}\n${payment}\n`
+            })
+        });
+
+        const data = await response.text();
+
+        convertOutputToSectionCards(data);
+
+    } catch {
+        showMessage("❌ Server Error", "error");
+    } finally {
+        loader.style.display = "none";
+    }
+});
+</script>
+</body>
+</html>
