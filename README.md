@@ -21,6 +21,15 @@ The main parking logic is implemented in **C++ using Object Oriented Programming
 * HTML
 * CSS
 * JavaScript
+  
+## How the Project Works
+
+1. The user interacts with the parking system through the web interface.
+2. The frontend sends requests to the Node.js server.
+3. The server runs the C++ program which contains the main parking logic.
+4. The C++ program processes parking operations and stores data using file handling.
+5. The result is sent back to the webpage and displayed to the user.
+
 
 ## Deployment
 
