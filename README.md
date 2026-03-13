@@ -11,8 +11,8 @@ The main parking logic is implemented in **C++ using Object Oriented Programming
 * VIP and Emergency Parking
 * Search Vehicle by Number
 * View Available Parking Slots
-* Parking History Records
-* Admin Dashboard for Revenue Tracking
+* Parking History Records(Admin)
+* Admin Dashboard for Revenue Tracking, Active Vehicle Tracking
 
 ## Technologies Used
 
